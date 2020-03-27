@@ -7,6 +7,9 @@ import Auth from './templates/Auth';
 import Events from './templates/Events';
 import Bookings from './templates/Bookings';
 
+// Componenets
+import MainNavbar from './components/Navbar/MainNavbar';
+
 // CSS
 import './App.css';
 
@@ -14,12 +17,17 @@ import './App.css';
 function App() {
     return (
         <BrowserRouter>
-            <Switch>
-                <Redirect from="/" to="/auth" exact />
-                <Route path="/auth" component={ Auth } />
-                <Route path="/events" component={ Events } />
-                <Route path="/bookings" component={ Bookings } />
-            </Switch>
+            <React.Fragment>
+                <MainNavbar></MainNavbar>
+                <main>
+                    <Switch>
+                        <Redirect from="/" to="/auth" exact />
+                        <Route path="/auth" component={ Auth } />
+                        <Route path="/events" component={ Events } />
+                        <Route path="/bookings" component={ Bookings } />
+                    </Switch> 
+                </main>
+            </React.Fragment>
         </BrowserRouter>
     );
 }
