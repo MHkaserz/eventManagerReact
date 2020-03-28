@@ -21,11 +21,11 @@ const mainNavbar = props => (
 					<NavLink to="/bookings">Bookings</NavLink>
 				</li>
 				<li className="navItem hasDropdown">
-					<a href="#">Theme</a>
+					<a href="#void">Theme</a>
 					<ul className="dropdown">
-						<li className="dropdownItem"> <a id="dark" href="#">Dark</a> </li>
-						<li className="dropdownItem"> <a id="light" href="#">Light</a> </li>
-						<li className="dropdownItem"> <a id="default" href="#">Default</a> </li>
+						<li className="dropdownItem"> <a id="dark" href="#dark">Dark</a> </li>
+						<li className="dropdownItem"> <a id="light" href="#light">Light</a> </li>
+						<li className="dropdownItem"> <a id="default" href="#default">Default</a> </li>
 					</ul>
 				</li>
 				<li className="navItem login">
@@ -35,7 +35,7 @@ const mainNavbar = props => (
 		</nav>
 		
 		<header>
-			<div className="navLogo">
+			<div className="navLogo dark">
 				<img src={logo} alt={'Logo'} className="logo" height="250" width="250"/>
 				<h1>Eventee | Events Manager</h1>
 				<p>React | Node | Express | GraphQL | MongoDB</p>

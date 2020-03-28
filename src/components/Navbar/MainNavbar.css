@@ -82,6 +82,18 @@ a {
 	margin-bottom: 5px;
 }
 
+#dark::before {
+    background: #2a2e35;
+}
+
+#light::before {
+    background: #ffffff;
+}
+
+#default::before {
+    background: var(--bg-default);
+}
+
 /* Header css */
 header {
 	padding: 1em;
@@ -90,4 +102,17 @@ header {
 	padding-bottom: 3.5em;
 	text-align: center;
 	clip-path: polygon(50% 0%, 100% 0%, 100% 55%, 70% 70%, 50% 100%, 30% 70%, 0% 55%, 0% 0%);
+	font-size: 0.8vw;
 }
+
+header img {
+	max-width: 100%; 
+    height: auto;
+    transition: 500ms ease-in-out
+}
+
+.light img {
+	filter: invert(1);
+	transition: 500ms ease-in-out
+}
+

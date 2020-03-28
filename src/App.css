@@ -22,35 +22,32 @@ body {
     --purple: #a82dd1;
     --yellow: #fff565;
 
-    --cblue: #102F72;
-    --awhite: #DDDBF1;
+    --powder: #B5DFE2;
+    --scarlet: #5C0029;
     --regalia: #543173;
-    --burgundy: #422040;
     --bogyellow: #E7AE05;
 }
 
 .dark {
 	--bg: var(--gray5);
-    --bg-nav: linear-gradient(to right, var(--gray5), var(--gray6));
-    --bg-nav-hover: var(--awhite);
+    --bg-nav: var(--gray6);
+    --bg-nav-hover: var(--bogyellow);
     --bg-dropdown: var(--gray6);
     --text: var(--gray0);
     --border-color: var(--purple);
-    --bg-solar: var(--blue);
+    --bg-default: var(--scarlet);
 }
 
 .light {
 	--bg: var(--gray0);
-    --bg-nav: linear-gradient(to right, var(--gray1), var(--gray3));
-    --bg-nav-hover: var(--burgundy);
+    --bg-nav: var(--gray3);
+    --bg-nav-hover: var(--scarlet);
     --bg-dropdown: var(--gray0);
     --text: var(--gray6);
-    --border-color: var(--blue);
-    --bg-solar: var(--yellow);
+    --border-color: var(--powder);
+    --bg-default: var(--bogyellow);
 }
 
 .default {
-	--blue: var(--cblue);
-	--purple: var(--regalia);
-	--yellow: var(--bogyellow);
+	/* Pick your own theme for the site by changing the gray variables */
 }
