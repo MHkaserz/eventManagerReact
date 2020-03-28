@@ -1,7 +1,7 @@
 // Imports
 import React from 'react';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
-import { manipulateClass } from './assests/scripts/helpers';
+import { manipulateClass, themeCache, themeDefault, isCached } from './assests/scripts/helpers';
 
 // Templates
 import Auth from './templates/Auth';
@@ -17,58 +17,30 @@ import './App.css';
 // Executables on load
 window.onload = function(){
     // Authentication check
-    //TODO: Check if logged in
-    // localStorage.setItem('isLogged', false);
+    localStorage.setItem('isLogged', 'true');
 
-    // DOM Elements to handle themes
+    // Prepare theme DOMs
     const darkTh = document.getElementById('dark');
     const lightTh = document.getElementById('light');
     const defaultTh = document.getElementById('default');
-    const body = document.body;
 
-    // Cache load
-
-    // Cached theme
+    // Load cached theme
     const theme = localStorage.getItem('theme');
     const isDefault = localStorage.getItem('isDefault');
 
-    // Cached auth
-    // const isLogged = localStorage.getItem('isLogged');
-    const isLogged = true;
-
-    // Event handlers
+    // Load cached auth
+    const isLogged = localStorage.getItem('isLogged');
 
     // Manage theme events
-    darkTh.onclick = () => { 
-        body.classList.replace('light', 'dark');
-        localStorage.setItem('theme', 'dark');
-    };
+    darkTh.onclick = () => themeCache('light', 'dark');
+    lightTh.onclick = () => themeCache('dark', 'light');
+    defaultTh.onclick = () => themeDefault();
 
-    lightTh.onclick = () => { 
-        body.classList.replace('dark', 'light');
-        localStorage.setItem('theme', 'light');
-    };
+    // Manage cached theme on reload
+    isCached(theme, isDefault);
 
-    defaultTh.onclick = () => {
-        if(body.classList.contains('default')) {
-            body.classList.remove('default');
-            localStorage.setItem('isDefault', false);
-        } else { 
-            body.classList.add('default'); 
-            localStorage.setItem('isDefault', true);
-        }
-    };
-
-    // Apply cache on reload
-
-    // Manage theme
-    if(theme) { 
-        body.classList.add(theme); 
-        isDefault && body.classList.add('default') 
-    } else { body.classList.add('dark'); }
-
-    // Manage navbar
-    if(isLogged) {
+    // Manage cached auth on reload
+    if(isLogged === 'true') {
         manipulateClass('loginNav', 'hidden', 'add');
         manipulateClass('profileNav', 'hidden', 'remove');
         manipulateClass('bookingsNav', 'hidden', 'remove');
