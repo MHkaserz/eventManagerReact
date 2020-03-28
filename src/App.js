@@ -1,6 +1,7 @@
 // Imports
 import React from 'react';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
+import { manipulateClass } from './assests/scripts/helpers';
 
 // Templates
 import Auth from './templates/Auth';
@@ -15,13 +16,29 @@ import './App.css';
 
 // Executables on load
 window.onload = function(){
+    // Authentication check
+    //TODO: Check if logged in
+    // localStorage.setItem('isLogged', false);
+
     // DOM Elements to handle themes
     const darkTh = document.getElementById('dark');
     const lightTh = document.getElementById('light');
     const defaultTh = document.getElementById('default');
     const body = document.body;
 
+    // Cache load
+
+    // Cached theme
+    const theme = localStorage.getItem('theme');
+    const isDefault = localStorage.getItem('isDefault');
+
+    // Cached auth
+    // const isLogged = localStorage.getItem('isLogged');
+    const isLogged = true;
+
     // Event handlers
+
+    // Manage theme events
     darkTh.onclick = () => { 
         body.classList.replace('light', 'dark');
         localStorage.setItem('theme', 'dark');
@@ -33,20 +50,33 @@ window.onload = function(){
     };
 
     defaultTh.onclick = () => {
-        if(body.classList.contains('default')){
+        if(body.classList.contains('default')) {
             body.classList.remove('default');
             localStorage.setItem('isDefault', false);
-        } else { body.classList.add('default'); 
+        } else { 
+            body.classList.add('default'); 
             localStorage.setItem('isDefault', true);
         }
     };
 
     // Apply cache on reload
-    const theme = localStorage.getItem('theme');
-    const isDefault = localStorage.getItem('isDefault');
 
-    if(theme) { body.classList.add(theme); isDefault && body.classList.add('default') }
-    else { body.classList.add('dark'); }
+    // Manage theme
+    if(theme) { 
+        body.classList.add(theme); 
+        isDefault && body.classList.add('default') 
+    } else { body.classList.add('dark'); }
+
+    // Manage navbar
+    if(isLogged) {
+        manipulateClass('loginNav', 'hidden', 'add');
+        manipulateClass('profileNav', 'hidden', 'remove');
+        manipulateClass('bookingsNav', 'hidden', 'remove');
+    } else {
+        manipulateClass('loginNav', 'hidden', 'remove');
+        manipulateClass('profileNav', 'hidden', 'add');
+        manipulateClass('bookingsNav', 'hidden', 'add');
+    }
 }
 
 // Application starting function
