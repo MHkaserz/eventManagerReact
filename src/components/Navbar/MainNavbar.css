@@ -15,7 +15,8 @@ a {
 	color: var(--text);
 }
 
-.navbar a:hover {
+.navbar a:hover,
+.navbar a.active {
 	color: var(--bg-nav-hover);
 	transition: 300ms ease-in-out;
 }
