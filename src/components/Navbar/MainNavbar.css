@@ -17,8 +17,16 @@ a {
 	color: var(--text);
 }
 
+.navItem a {
+	padding: 30px 55px 20px 55px;
+	clip-path: polygon(50% 0%, 100% 0%, 100% 55%, 70% 90%, 50% 100%, 30% 90%, 0% 55%, 0% 0%);
+	font-weight: bold;
+}
+
 .navbar a:hover {
 	color: var(--bg-nav-hover);
+	background: var(--bg);
+	transition: 150ms ease-in-out;
 }
 
 .navItems {
@@ -52,9 +60,19 @@ a {
 	padding: 0.5rem;
 
 	box-shadow: rgba(2, 8, 20, 0.1) 0px 0.175rem 0.5em;
-	transform: translateX(-44%);
+	transform: translateX(-38%);
 
 	transition: opacity .15s ease-out;
+}
+
+.dropdown a {
+	padding: 0;
+	border-radius: 0;
+	clip-path: none;
+}
+
+.dropdown a:hover {
+	background: none;
 }
 
 .hasDropdown:focus-within .dropdown {
@@ -101,7 +119,7 @@ header {
 	margin-bottom: 1em;
 	padding-bottom: 3.5em;
 	text-align: center;
-	clip-path: polygon(50% 0%, 100% 0%, 100% 55%, 70% 70%, 50% 100%, 30% 70%, 0% 55%, 0% 0%);
+	clip-path: polygon(50% 0%, 100% 0%, 100% 55%, 70% 90%, 50% 100%, 30% 90%, 0% 55%, 0% 0%);
 	font-size: 0.8vw;
 }
 

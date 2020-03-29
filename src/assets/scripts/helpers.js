@@ -27,7 +27,6 @@ exports.themeDefault = () => {
 
 // Manage cached theme
 exports.isCached = (theme, isDefault) => {
-	console.log(isDefault);
 	if(theme) { 
 		body.classList.add(theme); 
     } else { 
@@ -36,7 +35,6 @@ exports.isCached = (theme, isDefault) => {
     }
 
     if(isDefault === 'true') { 
-    	console.log(isDefault);
     	body.classList.add('default'); 
 	} else {
 		body.classList.remove('default'); 

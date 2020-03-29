@@ -1,7 +1,7 @@
 // Imports
 import React from 'react';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
-import { manipulateClass, themeCache, themeDefault, isCached } from './assests/scripts/helpers';
+import { manipulateClass, themeCache, themeDefault, isCached } from './assets/scripts/helpers';
 
 // Templates
 import Auth from './templates/Auth';

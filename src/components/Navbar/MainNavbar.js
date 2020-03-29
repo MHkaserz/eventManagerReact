@@ -1,7 +1,10 @@
 // Imports
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import logo from '../../assests/imgs/navbar/logostroke.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+// Assests
+import logo from '../../assets/imgs/navbar/logostroke.png';
 
 // CSS
 import './MainNavbar.css';
@@ -29,7 +32,7 @@ const mainNavbar = props => (
 					<NavLink to="/auth">Login</NavLink>
 				</li>
 				<li id="profileNav" className="navItem">
-					<NavLink to="/profile">Profile</NavLink>
+					<NavLink to="/profile"><FontAwesomeIcon icon="faXing"/></NavLink>
 				</li>
 			</ul>
 		</nav>
