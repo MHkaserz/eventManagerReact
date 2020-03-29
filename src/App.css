@@ -26,6 +26,8 @@ body {
     --scarlet: #5C0029;
     --regalia: #543173;
     --bogyellow: #E7AE05;
+
+    --svg-transition-time: 150ms;
 }
 
 .dark {
