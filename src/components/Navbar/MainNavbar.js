@@ -1,7 +1,7 @@
 // Imports
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { UserIcon, ThemeIcon, BookingsIcon, EventsIcon, DarkIcon, LightIcon, DefaultIcon } from '../../assets/scripts/svgs';
+import { SigninIcon, UserIcon, ThemeIcon, BookingsIcon, EventsIcon, DarkIcon, LightIcon, DefaultIcon } from '../../assets/scripts/svgs';
 
 // Assests
 import logo from '../../assets/imgs/navbar/logostroke.png';
@@ -45,7 +45,9 @@ const mainNavbar = props => (
 					</ul>
 				</li>
 				<li id="loginNav" className="navItem">
-					<NavLink to="/auth">Login</NavLink>
+					<NavLink to="/auth">
+						<SigninIcon></SigninIcon>
+					</NavLink>
 				</li>
 				<li id="profileNav" className="navItem">
 					<NavLink to="/profile">

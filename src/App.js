@@ -17,7 +17,7 @@ import './App.css';
 // Executables on load
 window.onload = function(){
     // Authentication check
-    localStorage.setItem('isLogged', 'true');
+    localStorage.setItem('isLogged', 'false');
 
     // Prepare theme DOMs
     const darkTh = document.getElementById('dark');

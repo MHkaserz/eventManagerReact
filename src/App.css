@@ -2,7 +2,8 @@
 body {
 	margin: 0;
 	padding: 0;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Montserrat', sans-serif !important;
+    -webkit-font-smoothing: antialiased;
 	color: var(--text);
 	background: var(--bg);
 	transition: background 500ms ease-in-out, color 500ms ease-in-out;
@@ -66,4 +67,22 @@ body::-webkit-scrollbar-thumb {
 
 body::-webkit-scrollbar-track {
 	background: var(--bg-dropdown);
+}
+
+/* Getting rid of the ugly blue boxes */
+textarea:hover, 
+input:hover, 
+textarea:active, 
+input:active, 
+textarea:focus, 
+input:focus,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+.btn:active,
+.btn.active {
+    outline: 0px !important;
+    -webkit-appearance: none;
+    box-shadow: none !important;
 }

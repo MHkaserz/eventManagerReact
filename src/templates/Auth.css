@@ -1,0 +1,70 @@
+/* Auth css */
+.authForm{
+	width: 20rem;
+	max-width: 40%;
+	margin: 6rem auto;
+	transform: scale(1.4);
+}
+
+.formHolder {
+	display: flex;
+	justify-content: space-around;
+	margin-bottom: 0.5rem;
+}
+
+.formActions {
+	margin: .25rem 0;
+	margin-left: 2rem; /* Make up for svg width */
+	display: inline-flex;
+}
+
+.formHolder svg {
+    width: 1.5rem;
+    min-width: 1rem;
+    margin-right: 0.5rem;
+}
+
+.formHolder input {
+	width: 100%;
+	display: block;
+	border: none;
+	border-bottom: 2px solid currentColor;
+	border-radius: 0px 0px 3px 3px;
+	background: var(--bg);
+	color: currentColor;
+}
+
+.formActions button {
+	background: transparent;
+	font: inherit;
+	color: currentColor;
+	border: none;
+	padding: 0;
+	margin-right: 1rem;
+	cursor: pointer;
+}
+
+.formActions svg {
+	color: var(--bg-nav);
+	width: 2.1rem;
+}
+
+#loginButton:hover svg,
+#loginButton:active svg {
+	color: var(--bg-nav-hover);
+	transform: translateX(7px);
+	transition: var(--svg-transition-time) ease-in-out;
+}
+
+#registerButton svg {
+	width: 1.8rem;
+	margin-top: .2px;
+}
+
+#registerButton:hover svg,
+#registerButton:active svg {
+	color: var(--bg-nav-hover);
+	transform: scale(1.2);
+	transition: var(--svg-transition-time) ease-in-out;
+}
+

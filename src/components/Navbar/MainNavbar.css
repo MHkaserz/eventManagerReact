@@ -32,7 +32,7 @@ a {
 	display: none;
 }
 
-.themeIcon {
+.shiftedIcon {
 	position: relative;
 	left: 5px;
 }
@@ -198,14 +198,14 @@ header img {
 
 	.dropdown {
 		flex-direction: row;
-		width: 60vw;
+		width: 20vw;
 		border-top: 2px solid var(--border-color);
 
 		border-bottom-right-radius: 8px;
 		border-bottom-left-radius: 8px;
-		margin-top: 2rem; 
 
-		right: 7vw;
+		top: 10vh;
+		transform: translateX(-6.85vw);
 		height: 3rem;
 	}
 
