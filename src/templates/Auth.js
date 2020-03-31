@@ -1,11 +1,22 @@
 // Imports
 import React, { Component } from 'react';
+import { connect } from "react-redux";
+
+// Icons
 import { UserIcon, PasswordIcon, LoginIcon, RegisterIcon } from '../assets/scripts/svgs'
 
 // CSS
 import './Auth.css';
 
 class Auth extends Component {
+	authorize = () => {
+		this.props.dispatch({ type: "AUTHPASS" });
+	};
+
+	register = () => {
+		this.props.dispatch({ type: "LOGOUT" });
+	};
+
 	render() {
 		return(
 			<form className="authForm">
@@ -22,10 +33,10 @@ class Auth extends Component {
 					<input type="password" id="passwordInput" placeholder=" Password"/>
 				</div>
 				<div className="formActions">
-					<button	id="registerButton" type="button" title="Register">
+					<button	onClick={this.register} id="registerButton" type="button" title="Register">
 						<RegisterIcon></RegisterIcon>
 					</button>
-					<button id="loginButton" type="submit" title="Login">
+					<button onClick={this.authorize} id="loginButton" type="button" title="Login">
 						<LoginIcon></LoginIcon>
 					</button>
 				</div>
@@ -34,4 +45,10 @@ class Auth extends Component {
 	}
 }
 
-export default Auth;
+// State handling
+const mapStateToProps = (state) => ({
+    isLogged: state.isLogged,
+    theme: state.theme
+})
+
+export default connect(mapStateToProps)(Auth);

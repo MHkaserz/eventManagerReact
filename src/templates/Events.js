@@ -1,5 +1,6 @@
 // Imports
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 
 class Events extends Component {
 	render() {
@@ -9,4 +10,10 @@ class Events extends Component {
 	}
 }
 
-export default Events;
+// State handling
+const mapStateToProps = (state) => ({
+    isLogged: state.isLogged,
+    theme: state.theme
+})
+
+export default connect(mapStateToProps)(Events);

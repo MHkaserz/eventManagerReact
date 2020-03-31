@@ -9,7 +9,7 @@ exports.manipulateClass = (elementName, className, operation) => {
 };
 
 // Theme replacing and caching
-exports.themeCache = (themeOld, themeNew) => {
+exports.themeApplyCache = (themeOld, themeNew) => {
 	body.classList.replace(themeOld, themeNew);
     localStorage.setItem('theme', themeNew);
 }

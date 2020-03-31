@@ -14,7 +14,7 @@
 
 .formActions {
 	margin: .25rem 0;
-	margin-left: 2rem; /* Make up for svg width */
+	margin-left: 2rem;
 	display: inline-flex;
 }
 
@@ -32,6 +32,7 @@
 	border-radius: 0px 0px 3px 3px;
 	background: var(--bg);
 	color: currentColor;
+	background: transparent;
 }
 
 .formActions button {
@@ -47,6 +48,7 @@
 .formActions svg {
 	color: var(--bg-nav);
 	width: 2.1rem;
+	transition: var(--svg-transition-time) ease-in-out;
 }
 
 #loginButton:hover svg,
@@ -67,4 +69,3 @@
 	transform: scale(1.2);
 	transition: var(--svg-transition-time) ease-in-out;
 }
-

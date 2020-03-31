@@ -10,15 +10,24 @@ a {
 	text-decoration: none;
 }
 
+button {
+	border: none;
+	background: none;
+	color: currentColor;
+}
+
 .navbar {
 	background: var(--bg-nav);
 	color: var(--text);
+	z-index: 1;
 }
 
 .navbar a:hover,
-.navbar a.active {
+.navbar a.active,
+.navbar button:hover,
+.navbar button.active {
 	color: var(--bg-nav-hover);
-	transition: 300ms ease-in-out;
+	cursor: pointer;
 }
 
 .navItems {
@@ -49,20 +58,12 @@ a {
 	justify-content: space-around;
 	padding: 0.5rem;
 
-	box-shadow: rgba(2, 8, 20, 0.1) 0px 0.175rem 0.5em;
-
+	box-shadow: 0px 0.175rem 0.25em rgba(2, 8, 20, 0.1);
 	transition: opacity .15s ease-out;
 }
 
 .hasDropdown:focus-within .dropdown {
 	opacity: 1;
-	pointer-events: auto;
-}
-
-.dropdownItem a {
-	width: 100%;
-	height: 100%;
-	size: 0.7rem;
 }
 
 /* Header css */
@@ -74,17 +75,26 @@ header {
 	text-align: center;
 	clip-path: polygon(50% 0%, 100% 0%, 100% 55%, 70% 90%, 50% 100%, 30% 90%, 0% 55%, 0% 0%);
 	font-size: 0.8vw;
+	height: 65%;
 }
 
 header img {
+	height: auto;
 	max-width: 100%; 
-    height: auto;
     transition: 500ms ease-in-out
 }
 
-.light img {
+.light header img {
 	filter: invert(1);
 	transition: 500ms ease-in-out
+}
+
+header h1 {
+	font-size: 28px;
+}
+
+header p {
+	font-size: 20px;
 }
 
 /* SVG css */
@@ -93,38 +103,45 @@ header img {
  	min-width: 2rem;
 }
 
-.primaryColor {
+.navbar .primaryColor {
 	opacity: .5;
 }
 
-.secodaryColor {
+.navbar .secodaryColor {
 	opacity: .2;
 }
 
-.navItem a:hover .primaryColor {
+.navItem a:hover .primaryColor,
+.navItem button:hover .primaryColor {
 	opacity: 1;
 	transition: var(--svg-transition-time) ease-in-out;
 }
 
-.navItem a:hover .secondaryColor {
+.navItem button:hover .secondaryColor {
 	opacity: .5;
 	transition: var(--svg-transition-time) ease-in-out;
 }
 
 #dark:hover .primaryColor {
 	color: black;
-	opacity: 1;
-	transition: var(--svg-transition-time) ease-in-out;
 }
 
 #light:hover .primaryColor {
 	color: white;
-	opacity: 1;
-	transition: var(--svg-transition-time) ease-in-out;
 }
 
 #light:hover .secondaryColor {
 	color: var(--bogyellow);
+}
+
+#default:hover .secondaryColor {
+	color: var(--bg-nav-hover);
+}
+
+#dark:hover .primaryColor,
+#light:hover .primaryColor,
+#light:hover .secondaryColor,
+#default:hover .secondaryColor {	
 	opacity: 1;
 	transition: var(--svg-transition-time) ease-in-out;
 }
@@ -135,28 +152,26 @@ header img {
 	transition: var(--svg-transition-time) ease-in-out;
 }
 
-#default:hover .secondaryColor {
-	color: var(--bg-nav-hover);
-	opacity: 1;
-	transition: var(--svg-transition-time) ease-in-out;
-}
-
 /* Small screens */
 @media only screen and (max-width: 600px){
+	header h1,
+	header p {
+		display: none;
+	}
+
 	.navbar {
 		right: 0;
 		width: 10vw;
 		height: 100vh;
 		position: fixed;
-		z-index: 1;
 	}
 
-	.navItems {
+	.navItems,
+	.dropdown {
 		flex-direction: column;
 	}
 
 	.dropdown {
-		flex-direction: column;
 		height: 30vh;
 		border-right: 2px solid var(--border-color);
 
@@ -164,7 +179,7 @@ header img {
 		border-top-left-radius: 8px;
 
 		right: 12vw; 
-		transform: translateY(-53.2%);
+		top: 34.15vh;
 		width: 3rem;
 	}
 
@@ -174,8 +189,27 @@ header img {
 		clip-path: none;
 	}
 
-	.dropdown a:hover {
+	.hasDropdown button {
+		margin-left: 7px;
+	}
+
+	.dropdown a:hover,
+	.dropdown button {
 		background: none;
+	}
+}
+
+/* Avergae screens */
+@media only screen and (max-width: 950px){
+	header h1,
+	header p {
+		font-size: 10px;
+		margin: 0;
+	}
+
+	header img {
+		width: 160px;
+		height: 160px;
 	}
 }
 
@@ -187,13 +221,19 @@ header img {
 		height: 10vh;
 	}
 
-	.navbar a:hover {
+	.navbar a:hover,
+	.navbar button:hover {
 		background: var(--bg);
 	}
 
-	.navItem a {
+	.navItem a,
+	.navItem button {
 		padding: 55px 55px 20px 55px;
 		clip-path: polygon(50% 0%, 100% 0%, 100% 55%, 70% 90%, 50% 100%, 30% 90%, 0% 55%, 0% 0%);
+	}
+
+	.navItem button {
+		transform: translateY(-15%);
 	}
 
 	.dropdown {
@@ -205,17 +245,19 @@ header img {
 		border-bottom-left-radius: 8px;
 
 		top: 10vh;
-		transform: translateX(-6.85vw);
+		left: 39.6vw;
 		height: 3rem;
 	}
 
-	.dropdown a {
+	.dropdown button {
 		padding: 0;
 		border-radius: 0;
 		clip-path: none;
+		background: transparent;
 	}
 
-	.dropdown a:hover {
+	.dropdown a:hover,
+	.dropdown button:hover {
 		background: none;
 	}
 }

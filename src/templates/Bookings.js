@@ -1,5 +1,6 @@
 // Imports
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 
 class Bookings extends Component {
 	render() {
@@ -9,4 +10,10 @@ class Bookings extends Component {
 	}
 }
 
-export default Bookings;
+// State handling
+const mapStateToProps = (state) => ({
+    isLogged: state.isLogged,
+    theme: state.theme
+})
+
+export default connect(mapStateToProps)(Bookings);

@@ -1,6 +1,8 @@
 // Imports
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+
+// Icons
 import { SigninIcon, UserIcon, ThemeIcon, BookingsIcon, EventsIcon, DarkIcon, LightIcon, DefaultIcon } from '../../assets/scripts/svgs';
 
 // Assests
@@ -19,28 +21,30 @@ const mainNavbar = props => (
 						<EventsIcon></EventsIcon>
 					</NavLink>
 				</li>
-				<li id="bookingsNav" className="navItem">
+				<li id="bookingsNav" className="navItem hidden">
 					<NavLink to="/bookings">
 						<BookingsIcon></BookingsIcon>
 					</NavLink>
 				</li>
 				<li className="navItem hasDropdown">
-					<a href="#theme"><ThemeIcon></ThemeIcon></a>
+					<button title="Theme">
+						<ThemeIcon></ThemeIcon>
+					</button>
 					<ul className="dropdown">
 						<li className="dropdownItem"> 
-							<a id="dark" href="#dark">
+							<button id="dark" title="Dark">
 								<DarkIcon></DarkIcon>
-							</a> 
+							</button> 
 						</li>
 						<li className="dropdownItem"> 
-							<a id="light" href="#light">
+							<button id="light" title="Light">
 								<LightIcon></LightIcon>
-							</a> 
+							</button> 
 						</li>
 						<li className="dropdownItem"> 
-							<a id="default" href="#default">
+							<button id="default" title="Default">
 								<DefaultIcon></DefaultIcon>
-							</a> 
+							</button> 
 						</li>
 					</ul>
 				</li>
@@ -49,7 +53,7 @@ const mainNavbar = props => (
 						<SigninIcon></SigninIcon>
 					</NavLink>
 				</li>
-				<li id="profileNav" className="navItem">
+				<li id="profileNav" className="navItem hidden">
 					<NavLink to="/profile">
 						<UserIcon></UserIcon>
           			</NavLink>
@@ -59,7 +63,7 @@ const mainNavbar = props => (
 		
 		<header>
 			<div className="navLogo dark">
-				<img src={logo} alt={'Logo'} className="logo" height="250" width="250"/>
+				<img src={logo} alt={'Logo'} className="logo" height="220" width="220"/>
 				<h1>Eventee | Events Manager</h1>
 				<p>React | Node | Express | GraphQL | MongoDB</p>
 			</div>
