@@ -1,11 +1,12 @@
 .someModalForm {
 	z-index: 5;
-	width: 30vw;
-	height: 40vh;
+	width: 40vw;
+	min-width: 40vw;
+	max-height: 80vh;
 	border: 1px solid currentColor;
 	position: fixed;
-	top: 30vh;
-	left: 35vw;
+	top: 25vh;
+	left: 30vw;
 	background: var(--bg);
 }
 
@@ -19,10 +20,6 @@
 	flex-direction: column;
 	display: flex;
 	justify-content: space-around;
-}
-
-.modalInputs {
-	height: 27vh;
 }
 
 .modalActions {

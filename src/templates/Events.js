@@ -31,7 +31,24 @@ class Events extends Component {
 					title="ADD EVENT"
 					onCancel={this.cancel}
 					onConfirm={this.confirm}
-					> </Modal>}
+					><form className="eventForm">
+						<div className="formHolder">
+							<input type="text" placeholder=" Title"/> 
+						</div>
+						<div className="formHolder">
+							<input type="date"/> 
+						</div>
+						<div className="formHolder">
+							<input type="number" placeholder=" Price"/> 
+						</div>
+						<div className="formHolder">
+							<input type="text" placeholder=" Category"/> 
+						</div>
+						<div className="formHolder">
+							<textarea rows="4" placeholder=" Description"></textarea>
+						</div>
+					</form> 
+				</Modal>}
 				<div className="eventsContainer">
 					{this.props.isLogged && <button id="eventCreateButton" onClick={this.initiateCreateEvent}> Create event </button>}
 				</div>

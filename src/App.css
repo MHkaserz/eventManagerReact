@@ -55,6 +55,65 @@ body {
 	/* Pick your own theme for the site by changing the gray variables */
 }
 
+/* Forms general styling */
+.formHolder {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 0.5rem;
+}
+
+.formActions {
+    margin: .25rem 0;
+    margin-left: 2rem;
+    display: inline-flex;
+    transform: translateX(15%);
+}
+
+.formHolder svg {
+    width: 1.5rem;
+    min-width: 1rem;
+    margin-right: 0.5rem;
+}
+
+.formHolder input,
+.formHolder textarea {
+    width: 100%;
+    display: block;
+    border: none;
+    border-bottom: 2px solid var(--border-color);
+    border-radius: 0px 0px 3px 3px;
+    background: var(--bg);
+    color: currentColor;
+    background: transparent;
+    max-height: 10vh;
+}
+
+textarea {
+    min-width: 100%;
+    min-height: 3vh;
+}
+
+.dummy svg {
+    color: transparent;
+}
+
+.formActions button {
+    background: transparent;
+    font: inherit;
+    color: currentColor;
+    border: none;
+    padding: 0;
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+.formActions svg {
+    color: var(--bg-nav);
+    width: 2.1rem;
+    transition: var(--svg-transition-time) ease-in-out;
+}
+
+/* Special case classes */
 .hidden {
     display: none;
 }

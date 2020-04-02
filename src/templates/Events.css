@@ -1,3 +1,10 @@
+.eventForm {
+	width: 20rem;
+	max-width: 40%;
+	margin: 4rem auto;
+	transform: scale(1.4);
+}
+
 #eventCreateButton {
 	float: right;
 	border: 2px solid currentColor;

@@ -71,7 +71,7 @@ const mainNavbar = props => {
 				<div className="navLogo dark">
 					<img src={logo} alt={'Logo'} className="logo" height="220" width="220"/>
 					<h1>Eventee | Events Manager</h1>
-					<p>React | Node | Express | GraphQL | MongoDB</p>
+					<p>React | Redux | Node | Express | GraphQL | MongoDB</p>
 				</div>
 			</header>
 		</div>
