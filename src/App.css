@@ -55,6 +55,15 @@ body {
 	/* Pick your own theme for the site by changing the gray variables */
 }
 
+.hidden {
+    display: none;
+}
+
+.shiftedIcon {
+    position: relative;
+    left: 5px;
+}
+
 /* Custom slider */
 body::-webkit-scrollbar {
 	width: 0.5rem;
@@ -86,3 +95,17 @@ label:focus,
     -webkit-appearance: none;
     box-shadow: none !important;
 }
+
+/* Date picker */
+::-webkit-datetime-edit { }
+::-webkit-datetime-edit-fields-wrapper { background: var(--bg); }
+::-webkit-datetime-edit-text { color: currentColor; }
+
+::-webkit-datetime-edit-month-field,
+::-webkit-datetime-edit-day-field,
+::-webkit-datetime-edit-year-field { 
+    color: currentColor; opacity: .4; 
+}
+
+::-webkit-inner-spin-button { display: none; }
+::-webkit-calendar-picker-indicator { background: transparent; }

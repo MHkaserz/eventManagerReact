@@ -16,6 +16,7 @@
 	margin: .25rem 0;
 	margin-left: 2rem;
 	display: inline-flex;
+	transform: translateX(15%);
 }
 
 .formHolder svg {
@@ -28,11 +29,15 @@
 	width: 100%;
 	display: block;
 	border: none;
-	border-bottom: 2px solid currentColor;
+	border-bottom: 2px solid var(--border-color);
 	border-radius: 0px 0px 3px 3px;
 	background: var(--bg);
 	color: currentColor;
 	background: transparent;
+}
+
+.dummy svg {
+	color: transparent;
 }
 
 .formActions button {
@@ -51,21 +56,34 @@
 	transition: var(--svg-transition-time) ease-in-out;
 }
 
-#loginButton:hover svg,
-#loginButton:active svg {
+#submitIcon {
+	transform: translateX(80%);
+}
+
+#submitButton:hover svg,
+#submitButton:active svg {
 	color: var(--bg-nav-hover);
-	transform: translateX(7px);
+	transform: translateX(100%);
 	transition: var(--svg-transition-time) ease-in-out;
 }
 
-#registerButton svg {
+#signIcon {
+	transform: translateX(1px);
+}
+
+#switchButton svg {
 	width: 1.8rem;
 	margin-top: .2px;
 }
 
-#registerButton:hover svg,
-#registerButton:active svg {
+#switchButton:hover #registerIcon {
 	color: var(--bg-nav-hover);
-	transform: scale(1.2);
+	transform: scale(1.2) translateX(2px);
+	transition: var(--svg-transition-time) ease-in-out;
+}
+
+#switchButton:hover #signIcon {
+	color: var(--bg-nav-hover);
+	transform: translateX(-1px) rotate(-360deg);
 	transition: var(--svg-transition-time) ease-in-out;
 }

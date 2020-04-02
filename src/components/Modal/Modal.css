@@ -1,0 +1,50 @@
+.someModalForm {
+	z-index: 5;
+	width: 30vw;
+	height: 40vh;
+	border: 1px solid currentColor;
+	position: fixed;
+	top: 30vh;
+	left: 35vw;
+	background: var(--bg);
+}
+
+.modalHeader {
+	height: 5vh;
+	width: 100%;
+	background: var(--bg-nav);
+	color: currentColor;
+	font-size: 1.5rem;
+	text-align: center;
+	flex-direction: column;
+	display: flex;
+	justify-content: space-around;
+}
+
+.modalInputs {
+	height: 27vh;
+}
+
+.modalActions {
+	display: flex;
+	justify-content: flex-end;
+	padding: 1rem;
+}
+
+.modalActions button {
+	border: 2px solid currentColor;
+	margin-right: 10vw;
+	padding: 8px;
+	width: 6vw;
+	font-size: 1rem;
+	transition: var(--svg-transition-time) ease-in-out;
+	margin-right: 2vh;
+	background: var(--bg-nav);
+}
+
+.modalActions button:hover{
+	color: var(--bg-nav-hover);
+	border-color: var(--text);
+	transform: scale(1.2);
+	cursor: pointer;
+}

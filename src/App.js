@@ -1,5 +1,6 @@
 // Imports
-import React from 'react';
+import { connect } from 'react-redux';
+import React, { Component } from 'react';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 
 // Templates
@@ -14,23 +15,61 @@ import MainNavbar from './components/Navbar/MainNavbar';
 import './App.css';
 
 // Application starting function
-function App() {
-    return (
-        <BrowserRouter>
-            <React.Fragment>
-                <MainNavbar></MainNavbar>
-                <main>
-                    <Switch>
-                        <Redirect from="/" to="/auth" exact />
-                        <Route path="/auth" component={ Auth } />
-                        <Route path="/events" component={ Events } />
-                        <Route path="/bookings" component={ Bookings } />
-                    </Switch> 
-                </main>
-            </React.Fragment>
-        </BrowserRouter>
-    );
+class App extends Component {
+    // Handlers
+    logout = () => {
+        localStorage.setItem('token', '');
+        localStorage.setItem('userId', '');
+        localStorage.setItem('tokenEx', '');
+        this.props.dispatch({ type: "LOGOUT" });
+        window.location.href = "http://localhost:3000/auth";
+    }
+
+    // Render depending on state
+    render() {
+        if(this.props.isLogged){
+            return (
+                <BrowserRouter>
+                    <React.Fragment>
+                        <MainNavbar logout={this.logout}></MainNavbar>
+                        <main>
+                            <Switch>
+                                <Redirect from="/" to="/events" exact />
+                                <Redirect from="/auth" to="/events" exact />
+                                <Route path="/events" component={ Events } />
+                                <Route path="/bookings" component={ Bookings } />
+                            </Switch> 
+                        </main>
+                    </React.Fragment>
+                </BrowserRouter>
+            );
+        } else {
+            return (
+                <BrowserRouter>
+                    <React.Fragment>
+                        <MainNavbar></MainNavbar>
+                        <main>
+                            <Switch>
+                                <Redirect from="/" to="/auth" exact />
+                                <Redirect from="/bookings" to="/auth" exact />
+                                <Route path="/auth" component={ Auth } />
+                                <Route path="/events" component={ Events } />
+                            </Switch> 
+                        </main>
+                    </React.Fragment>
+                </BrowserRouter>
+            );
+        }
+    }
 }
 
-// Exports
-export default App;
+// State handling
+const mapStateToProps = (state) => ({
+    isLogged: state.isLogged,
+    switchTo: state.switchTo,
+    token: state.token,
+    userId: state.userId
+})
+
+//Exports
+export default connect(mapStateToProps)(App);

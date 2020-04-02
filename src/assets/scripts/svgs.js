@@ -2,7 +2,7 @@
 import React from 'react';
 
 // SVG icons
-const SigninIcon = props => (
+const LoginIcon = props => (
 	<svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
 		<g className="iconGroup">
   			<path fill="currentColor" className="primaryColor"
@@ -32,8 +32,8 @@ const PasswordIcon = props => (
 	</svg>
 );
 
-const LoginIcon = props => (
-	<svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="shiftedIcon">
+const SubmitIcon = props => (
+	<svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="submitIcon" className="shiftedIcon">
 		<g className="iconGroup">
   			<path fill="currentColor" className="primaryColor"
   				d="M215.6 295.9H24a23.94 23.94 0 0 1-24-24v-32a23.94 23.94 0 0 1 24-24h191.5l-77.6-71.1a23.84 23.84 0 0 1-.7-34.5l21.9-21.9a24.08 24.08 0 0 1 33.9-.1L344.9 239a24 24 0 0 1 0 34.1L193 423.7a24 24 0 0 1-33.9-.1l-21.9-21.9a24 24 0 0 1 .8-34.7z"
@@ -42,11 +42,31 @@ const LoginIcon = props => (
 	</svg>
 );
 
+const LogoutIcon = props => (
+	<svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="logoutIcon">
+		<g className="iconGroup">
+  			<path fill="currentColor" className="primaryColor"
+  				d="M272 112v51.6h-96c-26.5 0-48 21.5-48 48v88.6c0 26.5 21.5 48 48 48h96v51.6c0 42.6 51.7 64.2 81.9 33.9l144-143.9c18.7-18.7 18.7-49.1 0-67.9l-144-144C323.8 48 272 69.3 272 112zm192 144L320 400v-99.7H176v-88.6h144V112l144 144zM96 64h84c6.6 0 12 5.4 12 12v24c0 6.6-5.4 12-12 12H96c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h84c6.6 0 12 5.4 12 12v24c0 6.6-5.4 12-12 12H96c-53 0-96-43-96-96V160c0-53 43-96 96-96z"
+  			></path>
+		</g>
+	</svg>
+);
+
 const RegisterIcon = props => (
-	<svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+	<svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="registerIcon" className="">
 		<g className="iconGroup">
   			<path fill="currentColor" className="primaryColor"
   				d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+  			></path>
+		</g>
+	</svg>
+);
+
+const SignIcon = props => (
+	<svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="signIcon" className="hidden">
+		<g className="iconGroup">
+  			<path fill="currentColor" className="primaryColor"
+  				d="M506.578,274.10351C489.78116,202.99807,431.23821,146.26567,359.5898,131.959a194.38794,194.38794,0,0,0-101.80269,6.61719,143.73889,143.73889,0,0,1,85.51364-110.7441C356.6152,22.13681,353.61715,2.41416,339.207.963a196.56477,196.56477,0,0,0-65.10349,4.459C202.99807,22.21884,146.26567,80.76179,131.959,152.4102a194.38794,194.38794,0,0,0,6.61719,101.80269,143.73889,143.73889,0,0,1-110.7441-85.51364C22.13681,155.3848,2.41416,158.38285.963,172.793a196.56477,196.56477,0,0,0,4.459,65.10349C22.21884,309.00193,80.76179,365.73433,152.4102,380.041a194.38794,194.38794,0,0,0,101.80269-6.61719,143.73889,143.73889,0,0,1-85.51364,110.7441c-13.31445,5.69531-10.3164,25.418,4.09375,26.86913a196.56477,196.56477,0,0,0,65.10349-4.459C309.00193,489.78116,365.73433,431.23821,380.041,359.5898a194.38794,194.38794,0,0,0-6.61719-101.80269,143.73889,143.73889,0,0,1,110.7441,85.51364c5.69531,13.31445,25.418,10.3164,26.86913-4.09375A196.56477,196.56477,0,0,0,506.578,274.10351ZM256,304a48,48,0,1,1,48-48A47.99985,47.99985,0,0,1,256,304Z"
   			></path>
 		</g>
 	</svg>
@@ -119,4 +139,4 @@ const DefaultIcon = props => (
 );
 
 // Exports
-export { SigninIcon, UserIcon, PasswordIcon, LoginIcon, RegisterIcon, ThemeIcon, BookingsIcon, EventsIcon, DarkIcon, LightIcon, DefaultIcon };
+export { LoginIcon, UserIcon, PasswordIcon, SubmitIcon, LogoutIcon, RegisterIcon, SignIcon, ThemeIcon, BookingsIcon, EventsIcon, DarkIcon, LightIcon, DefaultIcon };

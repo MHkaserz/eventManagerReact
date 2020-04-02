@@ -37,15 +37,6 @@ button {
 	height: 100%
 }
 
-.hidden {
-	display: none;
-}
-
-.shiftedIcon {
-	position: relative;
-	left: 5px;
-}
-
 /* Dropdown */
 .dropdown {
 	position: absolute;
@@ -67,7 +58,7 @@ button {
 }
 
 /* Header css */
-header {
+.navbarContainer header {
 	padding: 1em;
 	background: var(--bg-nav);
 	margin-bottom: 1em;
@@ -78,22 +69,22 @@ header {
 	height: 65%;
 }
 
-header img {
+.navbarContainer header img {
 	height: auto;
 	max-width: 100%; 
     transition: 500ms ease-in-out
 }
 
-.light header img {
+.light .navbarContainer header img {
 	filter: invert(1);
 	transition: 500ms ease-in-out
 }
 
-header h1 {
+.navbarContainer header h1 {
 	font-size: 28px;
 }
 
-header p {
+.navbarContainer header p {
 	font-size: 20px;
 }
 
@@ -154,8 +145,8 @@ header p {
 
 /* Small screens */
 @media only screen and (max-width: 600px){
-	header h1,
-	header p {
+	.navbarContainer header h1,
+	.navbarContainer header p {
 		display: none;
 	}
 
@@ -177,6 +168,7 @@ header p {
 
 		border-bottom-left-radius: 8px;
 		border-top-left-radius: 8px;
+		padding-right: 1.2rem;
 
 		right: 12vw; 
 		top: 34.15vh;
@@ -201,13 +193,13 @@ header p {
 
 /* Avergae screens */
 @media only screen and (max-width: 950px){
-	header h1,
-	header p {
+	.navbarContainer header h1,
+	.navbarContainer header p {
 		font-size: 10px;
 		margin: 0;
 	}
 
-	header img {
+	.navbarContainer header img {
 		width: 160px;
 		height: 160px;
 	}
@@ -243,6 +235,7 @@ header p {
 
 		border-bottom-right-radius: 8px;
 		border-bottom-left-radius: 8px;
+		padding-top: 1.2rem;
 
 		top: 10vh;
 		left: 39.6vw;
