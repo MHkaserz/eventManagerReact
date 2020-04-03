@@ -37,7 +37,7 @@ const initialState = {
     creating: false
 }
 
-// Redux reducer
+// Redux reducer // TODO: Maybe refactor or understand dispatch better
 function reducer(state = initialState, action) {
 	switch(action.type) {
         // Fetch handlers
@@ -45,7 +45,7 @@ function reducer(state = initialState, action) {
             return {
                 events: action.events,
                 isLogged: state.isLogged,
-                switchTo: state.switchTo,
+                switchTo: 'Register',
                 token: state.token,
                 userId: state.userId,
                 tokenEx: state.tokenEx,
@@ -57,7 +57,6 @@ function reducer(state = initialState, action) {
 			return {    
                 events: state.events,
                 isLogged: true,
-                switchTo: 'Register',
                 token: action.token,
                 userId: action.userId,
                 tokenEx: action.tokenEx,
@@ -69,10 +68,26 @@ function reducer(state = initialState, action) {
 
         // Auth form actions
         case 'REGISTER':
-            return { switchTo: 'Login' };
+            return {    
+                events: state.events,
+                isLogged: state.isLogged,
+                switchTo: 'Login',
+                token: state.token,
+                userId: state.userId,
+                tokenEx: state.tokenEx,
+                creating: state.creating
+            };
 
         case 'LOGIN':
-            return { switchTo: 'Register' };
+            return {    
+                events: state.events,
+                isLogged: state.isLogged,
+                switchTo: 'Register',
+                token: state.token,
+                userId: state.userId,
+                tokenEx: state.tokenEx,
+                creating: state.creating
+            };
 
         // Modal forms actions
         case 'CREATING':

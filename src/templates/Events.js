@@ -92,7 +92,7 @@ class Events extends Component {
 				if(this.props.creating) { 
 					alert('Event created successfully!');
 					this.props.dispatch({ type: "CANCEL" });
-					this.fetchEvents();
+					this.fetchEvents(); // TODO: Append created event to the state events
 				} else {
 					if(!alert('Something went wrong')){window.location.reload();}
 				}
