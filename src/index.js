@@ -11,16 +11,6 @@ import './index.css';
 // Templates
 import App from './App';
 
-// Initial state
-const initialState = {
-	isLogged: false,
-    switchTo: 'Register',
-    token: '',
-    userId: '',
-    tokenEx: '',
-    creating: false
-}
-
 // Cache handling
 window.onload = function(){
 	// Load cached theme
@@ -36,18 +26,41 @@ window.onload = function(){
     document.getElementById('default').onclick = () => themeDefault();
 }
 
+// Initial state
+const initialState = {
+    events: [],
+    isLogged: false,
+    switchTo: 'Register',
+    token: '',
+    userId: '',
+    tokenEx: '',
+    creating: false
+}
+
 // Redux reducer
 function reducer(state = initialState, action) {
 	switch(action.type) {
+        // Fetch handlers
+        case 'FETCHEDEVENTS':
+            return {
+                events: action.events,
+                isLogged: state.isLogged,
+                switchTo: state.switchTo,
+                token: state.token,
+                userId: state.userId,
+                tokenEx: state.tokenEx,
+                creating: false
+            }
 
 		// Auth actions
 		case 'AUTHPASS':
 			return {    
+                events: state.events,
                 isLogged: true,
                 switchTo: 'Register',
-                token: localStorage.getItem('token'),
-                userId: localStorage.getItem('userId'),
-                tokenEx: localStorage.getItem('tokenEx'),
+                token: action.token,
+                userId: action.userId,
+                tokenEx: action.tokenEx,
                 creating: false
             };
 
@@ -64,7 +77,8 @@ function reducer(state = initialState, action) {
         // Modal forms actions
         case 'CREATING':
             return {    
-                isLogged: state.isLogged,
+                events: state.events,
+                isLogged: true,
                 token: state.token,
                 userId: state.userId,
                 tokenEx: state.tokenEx,
@@ -73,7 +87,8 @@ function reducer(state = initialState, action) {
 
         case 'CANCEL':
             return {    
-                isLogged: state.isLogged,
+                events: state.events,
+                isLogged: true,
                 token: state.token,
                 userId: state.userId,
                 tokenEx: state.tokenEx,

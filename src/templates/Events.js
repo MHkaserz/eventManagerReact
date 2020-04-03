@@ -20,6 +20,11 @@ class Events extends Component {
 		this.descriptionElement = React.createRef();
 	};
 
+	// Life cycle hook
+	componentDidMount() {
+		this.fetchEvents();
+	}
+
 	// Handlers
 	initiateCreateEvent = () => {
 		this.props.dispatch({ type: "CREATING" });
@@ -32,7 +37,7 @@ class Events extends Component {
 	confirm = () => {
 		// Get the input
 		const title = this.titleElement.current.value;
-		const price = this.priceElement.current.value;
+		const price = +this.priceElement.current.value;
 		const category = this.categoryElement.current.value;
 		const description = this.descriptionElement.current.value;
 
@@ -85,9 +90,9 @@ class Events extends Component {
 			} else {
 				// Dispatch the state
 				if(this.props.creating) { 
-					console.table(resData);
 					alert('Event created successfully!');
 					this.props.dispatch({ type: "CANCEL" });
+					this.fetchEvents();
 				} else {
 					if(!alert('Something went wrong')){window.location.reload();}
 				}
@@ -96,11 +101,60 @@ class Events extends Component {
 			// TODO: Handle network error
 			console.log(err); 
 		});
+	};
 
-		
+	// Fetch all events
+	fetchEvents = () => {
+		// Prepare the query
+		let requestBody;
+
+		requestBody = {
+		query: `
+			query {
+				events {
+					_id title price description category date owner { _id email name }
+				}
+			}
+		`
+		};
+
+		// Hit the API
+		fetch('http://localhost:8000/graphql', {
+			method: 'POST',
+			body: JSON.stringify(requestBody),
+			headers: {
+				'Content-type': 'application/json'
+			}
+		}).then(res => {
+			// Handle bad requests
+			if(res.status !== 200 && res.status !== 201) {
+				throw new Error('Denied!');
+			}
+			// Parse good requests
+			return res.json();
+		}).then(resData => {
+			// Handle the response data
+			if(resData.errors) {
+				// TODO: Handle errors
+			} else {
+				this.props.dispatch({ type: "FETCHEDEVENTS", events: resData.data.events });
+			}
+		}).catch(err => { 
+			// TODO: Handle network error
+			console.log(err); 
+		});
 	};
 
 	render() {
+		// Map events to lists before rendering 
+		const eventsList = this.props.events.map(event => {
+	      return (
+	        <li key={event._id} className="anEvent">
+	          	{event.title} {event.price}
+	        </li>
+	      );
+    	});
+
 		return(
 			<React.Fragment>
 				{this.props.creating && <Backdrop></Backdrop>}
@@ -129,6 +183,7 @@ class Events extends Component {
 				<div className="eventsContainer">
 					{this.props.isLogged && <button id="eventCreateButton" onClick={this.initiateCreateEvent}> Create event </button>}
 				</div>
+				<ul className="listedEvents"> { eventsList } </ul>
 			</React.Fragment>
 		);
 	}
@@ -136,12 +191,12 @@ class Events extends Component {
 
 // State handling
 const mapStateToProps = (state) => ({
+	events: state.events,
     isLogged: state.isLogged,
-    switchTo: state.switchTo,
     token: state.token,
     userId: state.userId,
-    creating: state.creating,
-    tokenEx: state.tokenEx
+    tokenEx: state.tokenEx,
+    creating: state.creating
 })
 
 export default connect(mapStateToProps)(Events);

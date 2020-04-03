@@ -17,12 +17,12 @@ const mainNavbar = props => {
 		<div className="navbarContainer">
 			<nav className="navbar">
 				<ul className="navItems">
-					<li className="navItem">
+					<li className="navItem" title="Events">
 						<NavLink to="/events">
 							<EventsIcon></EventsIcon>
 						</NavLink>
 					</li>
-					<li id="bookingsNav" className="navItem hidden">
+					<li id="bookingsNav" className="navItem hidden" title="Bookings">
 						<NavLink to="/bookings">
 							<BookingsIcon></BookingsIcon>
 						</NavLink>
@@ -49,12 +49,12 @@ const mainNavbar = props => {
 							</li>
 						</ul>
 					</li>
-					<li id="loginNav" className="navItem">
+					<li id="loginNav" className="navItem" title="Login">
 						<NavLink to="/auth">
 							<LoginIcon></LoginIcon>
 						</NavLink>
 					</li>
-					<li id="profileNav" className="navItem hidden">
+					<li id="profileNav" className="navItem hidden" title="Profile">
 						<NavLink to="/profile">
 							<UserIcon></UserIcon>
 	          			</NavLink>

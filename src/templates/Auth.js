@@ -42,7 +42,13 @@ class Auth extends Component {
 			}
 			return;
 		} else {
-			if(this.props.switchTo === 'Login') { birthDate = new Date(birth).toISOString(); }
+			if(this.props.switchTo === 'Login' && birth.trim().length !== 0) { 
+				birthDate = new Date(birth).toISOString(); 
+			} else {
+				if(this.props.switchTo === 'Login') {
+					alert('Please fill the birth date properly');
+				}
+			}
 		}
 
 		// Prepare the query
@@ -92,10 +98,15 @@ class Auth extends Component {
 			if(resData.errors) {
 				// TODO: Handle errors
 			} else {
-				// Dispatch the state and token to Redux store using dispatch and local storage
+				// Dispatch the state and token to Redux store and local storage
 				if(this.props.switchTo === 'Register') { 
 					allowedIn(resData);
-					this.props.dispatch({ type: "AUTHPASS" });
+					this.props.dispatch({ 
+						type: "AUTHPASS", 
+						token: resData.data.login.token, 
+						userId: resData.data.login.userId, 
+						tokenEx: resData.data.login.tokenEx 
+					});
 				} else {
 					if(!alert('New user created! You may login!')){window.location.reload();}
 				}
