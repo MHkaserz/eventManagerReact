@@ -42,3 +42,29 @@ exports.isCached = (theme, isDefault) => {
 	}
 }
 
+// On auth
+exports.allowedIn = (resData) => {
+    localStorage.setItem('token', resData.data.login.token);
+    localStorage.setItem('userId', resData.data.login.userId);
+    localStorage.setItem('tokenEx', resData.data.login.tokenExpiration);
+    this.manipulateClass('loginNav', 'hidden', 'add');
+    this.manipulateClass('logoutNav', 'hidden', 'remove');
+    this.manipulateClass('profileNav', 'hidden', 'remove');
+    this.manipulateClass('bookingsNav', 'hidden', 'remove');
+}
+
+// Registering
+exports.registering = () => {
+    this.manipulateClass('registerIcon', 'hidden', 'add');
+    this.manipulateClass('signIcon', 'hidden', 'remove');
+    this.manipulateClass('nameInput', 'hidden', 'remove');
+    this.manipulateClass('birthInput', 'hidden', 'remove');
+}
+
+// Loggin in
+exports.loggingIn = () => {
+    this.manipulateClass('registerIcon', 'hidden', 'remove');
+    this.manipulateClass('signIcon', 'hidden', 'add');
+    this.manipulateClass('nameInput', 'hidden', 'add');
+    this.manipulateClass('birthInput', 'hidden', 'add');
+}

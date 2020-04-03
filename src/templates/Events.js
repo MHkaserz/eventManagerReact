@@ -10,6 +10,16 @@ import Backdrop from '../components/Backdrop/Backdrop'
 import './Events.css';
 
 class Events extends Component {
+	// Grab the inputs and put them in props
+	constructor(props) {
+		super(props);
+		this.titleElement = React.createRef();
+		this.dateElement = React.createRef();
+		this.priceElement = React.createRef();
+		this.categoryElement = React.createRef();
+		this.descriptionElement = React.createRef();
+	};
+
 	// Handlers
 	initiateCreateEvent = () => {
 		this.props.dispatch({ type: "CREATING" });
@@ -20,7 +30,74 @@ class Events extends Component {
 	};
 
 	confirm = () => {
-		this.props.dispatch({ type: "CANCEL" });
+		// Get the input
+		const title = this.titleElement.current.value;
+		const price = this.priceElement.current.value;
+		const category = this.categoryElement.current.value;
+		const description = this.descriptionElement.current.value;
+
+		const date = this.dateElement.current.value;
+		let eventDate;
+
+		// Validate inputs before hitting the API
+		if(title.trim().length === 0 || description.trim().length === 0 ||
+			price <= 0 || date.trim().length === 0) {
+			alert('Please fill all the fields properly');
+			return;
+		} else {
+			eventDate = new Date(date).toISOString();
+		}
+
+		// Prepare the query
+		let requestBody;
+
+		if(this.props.creating) {
+			requestBody = {
+			query: `
+				mutation {
+					createEvent(eventInput: {title: "${title}", price: ${price}, description: "${description}", category: "${category}", date: "${eventDate}"}) {
+						_id title price description category date owner { email name }
+					}
+				}
+			`
+			};
+		}
+
+		// Hit the API
+		fetch('http://localhost:8000/graphql', {
+			method: 'POST',
+			body: JSON.stringify(requestBody),
+			headers: {
+				'Content-type': 'application/json',
+				'Authorization': `Bearer ${this.props.token}` 
+			}
+		}).then(res => {
+			// Handle bad requests
+			if(res.status !== 200 && res.status !== 201) {
+				throw new Error('Denied!');
+			}
+			// Parse good requests
+			return res.json();
+		}).then(resData => {
+			// Handle the response data
+			if(resData.errors) {
+				// TODO: Handle errors
+			} else {
+				// Dispatch the state
+				if(this.props.creating) { 
+					console.table(resData);
+					alert('Event created successfully!');
+					this.props.dispatch({ type: "CANCEL" });
+				} else {
+					if(!alert('Something went wrong')){window.location.reload();}
+				}
+			}
+		}).catch(err => { 
+			// TODO: Handle network error
+			console.log(err); 
+		});
+
+		
 	};
 
 	render() {
@@ -33,19 +110,19 @@ class Events extends Component {
 					onConfirm={this.confirm}
 					><form className="eventForm">
 						<div className="formHolder">
-							<input type="text" placeholder=" Title"/> 
+							<input ref={this.titleElement} type="text" placeholder=" Title"/> 
 						</div>
 						<div className="formHolder">
-							<input type="date"/> 
+							<input ref={this.dateElement} type="datetime-local"/> 
 						</div>
 						<div className="formHolder">
-							<input type="number" placeholder=" Price"/> 
+							<input ref={this.priceElement} type="number" placeholder=" Price"/> 
 						</div>
 						<div className="formHolder">
-							<input type="text" placeholder=" Category"/> 
+							<input ref={this.categoryElement} type="text" placeholder=" Category"/> 
 						</div>
 						<div className="formHolder">
-							<textarea rows="4" placeholder=" Description"></textarea>
+							<textarea ref={this.descriptionElement} rows="4" placeholder=" Description"></textarea>
 						</div>
 					</form> 
 				</Modal>}
