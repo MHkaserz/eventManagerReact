@@ -7,13 +7,10 @@
 
 #eventCreateButton {
 	float: right;
-	border: 2px solid currentColor;
 	margin-right: 10vw;
 	padding: 8px;
-	width: 10vw;
-	font-size: 1rem;
+	width: 3.5rem;
 	transition: var(--svg-transition-time) ease-in-out;
-	background: var(--bg-nav);
 }
 
 #eventCreateButton:hover {

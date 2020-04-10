@@ -6,34 +6,14 @@
 	transform: scale(1.4);
 }
 
-#submitIcon {
-	transform: translateX(80%);
-}
-
-#submitButton:hover svg,
-#submitButton:active svg {
-	color: var(--bg-nav-hover);
-	transform: translateX(100%);
-	transition: var(--svg-transition-time) ease-in-out;
-}
-
-#signIcon {
-	transform: translateX(1px);
-}
-
-#switchButton svg {
+#formActions svg {
 	width: 1.8rem;
 	margin-top: .2px;
 }
 
-#switchButton:hover #registerIcon {
+#submitButton:hover svg,
+#switchButton:hover svg {
 	color: var(--bg-nav-hover);
-	transform: scale(1.2) translateX(2px);
-	transition: var(--svg-transition-time) ease-in-out;
-}
-
-#switchButton:hover #signIcon {
-	color: var(--bg-nav-hover);
-	transform: translateX(-1px) rotate(-360deg);
+	transform: scale(1.2);
 	transition: var(--svg-transition-time) ease-in-out;
 }

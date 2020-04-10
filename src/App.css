@@ -9,6 +9,23 @@ body {
 	transition: background 500ms ease-in-out, color 500ms ease-in-out;
 }
 
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: currentColor;
+    text-decoration: none;
+}
+
+button {
+    border: none;
+    background: none;
+    color: currentColor;
+}
+
 /* Themes */
 :root {
 	--gray0: #f8f8f8;

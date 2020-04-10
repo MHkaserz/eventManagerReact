@@ -35,20 +35,17 @@ class Auth extends Component {
 
 		// Validate inputs before hitting the API
 		if(email.trim().length === 0 || password.trim().length === 0) {
-			if(this.props.switchTo === 'Login') {
-				if(name.trim().length === 0 || birth.trim().length === 0) {
-					alert('Please fill all the fields properly');
-				}
-			}
+			alert('Please fill all the fields properly');
 			return;
-		} else {
-			if(this.props.switchTo === 'Login' && birth.trim().length !== 0) { 
-				birthDate = new Date(birth).toISOString(); 
-			} else {
-				if(this.props.switchTo === 'Login') {
-					alert('Please fill the birth date properly');
-				}
+		}
+
+		// Validate in case of registering
+		if(this.props.switchTo === 'Login') {
+			if(birth.trim().length === 0 || name.trim().length === 0) {
+				alert('Please fill all the fields properly');
+				return;
 			}
+			birthDate = new Date(birth).toISOString();
 		}
 
 		// Prepare the query

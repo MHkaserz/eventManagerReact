@@ -1,6 +1,9 @@
 // Imports
 import React from 'react';
 
+// Icons
+import { SubmitIcon, CancelIcon } from '../../assets/scripts/svgs'
+
 // CSS
 import './Modal.css';
 
@@ -13,8 +16,8 @@ const Modal = props => (
 			{props.children}
 		</section>
 		<section className="modalActions"> 
-			<button onClick={props.onCancel}> Cancel </button>
-			<button onClick={props.onConfirm}> Confirm </button>
+			<button onClick={props.onCancel}> <CancelIcon></CancelIcon> </button>
+			<button onClick={props.onConfirm}> <SubmitIcon></SubmitIcon> </button>
 		</section>
 	</div>
 );

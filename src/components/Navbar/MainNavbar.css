@@ -1,21 +1,4 @@
 /* Navbar css */
-ul {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-
-a {
-	color: currentColor;
-	text-decoration: none;
-}
-
-button {
-	border: none;
-	background: none;
-	color: currentColor;
-}
-
 .navbar {
 	background: var(--bg-nav);
 	color: var(--text);

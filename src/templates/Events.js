@@ -6,6 +6,9 @@ import { connect } from "react-redux";
 import Modal from '../components/Modal/Modal';
 import Backdrop from '../components/Backdrop/Backdrop'
 
+// Icons
+import { CreateIcon } from '../assets/scripts/svgs'
+
 // CSS
 import './Events.css';
 
@@ -181,7 +184,7 @@ class Events extends Component {
 					</form> 
 				</Modal>}
 				<div className="eventsContainer">
-					{this.props.isLogged && <button id="eventCreateButton" onClick={this.initiateCreateEvent}> Create event </button>}
+					{this.props.isLogged && <button id="eventCreateButton" onClick={this.initiateCreateEvent}><CreateIcon></CreateIcon></button>}
 				</div>
 				<ul className="listedEvents"> { eventsList } </ul>
 			</React.Fragment>
