@@ -130,27 +130,27 @@ class Auth extends Component {
 		return(
 			<form className="authForm" onSubmit={this.authorize} autoComplete="off">
 				<div className="formHolder" id="emailInput">
-					<label> <UserIcon></UserIcon> </label>
+					<label> <UserIcon /> </label>
 					<input ref={this.emailElement} type="email" placeholder=" Email"/> 
 				</div>
 				<div className="formHolder" id="passwordInput">
-					<label> <PasswordIcon></PasswordIcon> </label>
+					<label> <PasswordIcon /> </label>
 					<input ref={this.passwordElement} type="password" placeholder=" Password"/>
 				</div>
 				<div className="formHolder hidden" id="nameInput">
-					<label className="dummy"> <PasswordIcon></PasswordIcon> </label>
+					<label className="dummy"> <PasswordIcon /> </label>
 					<input ref={this.nameElement} type="text" placeholder=" Name"/>
 				</div>
 				<div className="formHolder hidden" id="birthInput">
-					<label className="dummy"> <PasswordIcon></PasswordIcon> </label>
+					<label className="dummy"> <PasswordIcon /> </label>
 					<input ref={this.birthElement} type="date"/>
 				</div>
 				<div className="formActions">
 					<button	onClick={this.switchToRegister} id="switchButton" type="button" title={this.props.switchTo}>
-						<RegisterIcon></RegisterIcon><SignIcon></SignIcon>
+						<RegisterIcon /><SignIcon />
 					</button>
 					<button id="submitButton" type="submit" title="Submit">
-						<SubmitIcon></SubmitIcon>
+						<SubmitIcon />
 					</button>
 				</div>
 			</form>

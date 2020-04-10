@@ -31,7 +31,7 @@ class App extends Component {
             return (
                 <BrowserRouter>
                     <React.Fragment>
-                        <MainNavbar logout={this.logout}></MainNavbar>
+                        <MainNavbar logout={this.logout} />
                         <main>
                             <Switch>
                                 <Redirect from="/" to="/events" exact />
@@ -47,7 +47,7 @@ class App extends Component {
             return (
                 <BrowserRouter>
                     <React.Fragment>
-                        <MainNavbar></MainNavbar>
+                        <MainNavbar />
                         <main>
                             <Switch>
                                 <Redirect from="/" to="/auth" exact />

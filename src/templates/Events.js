@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 // Componenets
 import Modal from '../components/Modal/Modal';
 import Backdrop from '../components/Backdrop/Backdrop'
+import EventsList from '../components/Events/EventsList/EventsList';
 
 // Icons
 import { CreateIcon } from '../assets/scripts/svgs'
@@ -149,15 +150,6 @@ class Events extends Component {
 	};
 
 	render() {
-		// Map events to lists before rendering 
-		const eventsList = this.props.events.map(event => {
-	      return (
-	        <li key={event._id} className="anEvent">
-	          	{event.title} {event.price}
-	        </li>
-	      );
-    	});
-
 		return(
 			<React.Fragment>
 				{this.props.creating && <Backdrop></Backdrop>}
@@ -184,9 +176,9 @@ class Events extends Component {
 					</form> 
 				</Modal>}
 				<div className="eventsContainer">
-					{this.props.isLogged && <button id="eventCreateButton" onClick={this.initiateCreateEvent}><CreateIcon></CreateIcon></button>}
+					{this.props.isLogged && <button title="Create an event" id="eventCreateButton" onClick={this.initiateCreateEvent}><CreateIcon></CreateIcon></button>}
 				</div>
-				<ul className="listedEvents"> { eventsList } </ul>
+				<EventsList events={this.props.events} />
 			</React.Fragment>
 		);
 	}

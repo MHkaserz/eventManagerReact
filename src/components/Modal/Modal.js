@@ -16,8 +16,8 @@ const Modal = props => (
 			{props.children}
 		</section>
 		<section className="modalActions"> 
-			<button onClick={props.onCancel}> <CancelIcon></CancelIcon> </button>
-			<button onClick={props.onConfirm}> <SubmitIcon></SubmitIcon> </button>
+			<button title="Cancel" onClick={props.onCancel}> <CancelIcon /> </button>
+			<button title="Submit" onClick={props.onConfirm}> <SubmitIcon /> </button>
 		</section>
 	</div>
 );
