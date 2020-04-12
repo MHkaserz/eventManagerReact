@@ -94,6 +94,7 @@ class Auth extends Component {
 			// Handle the response data
 			if(resData.errors) {
 				// TODO: Handle errors
+				alert(resData.errors[0].message);
 			} else {
 				// Dispatch the state and token to Redux store and local storage
 				if(this.props.switchTo === 'Register') { 
@@ -110,6 +111,7 @@ class Auth extends Component {
 			}
 		}).catch(err => { 
 			// TODO: Handle network error
+			this.props.dispatch({ type: "CANCEL" });
 			console.log(err); 
 		});
 	};
@@ -160,11 +162,15 @@ class Auth extends Component {
 
 // State handling
 const mapStateToProps = (state) => ({
+    events: state.events,
     isLogged: state.isLogged,
     switchTo: state.switchTo,
     token: state.token,
     userId: state.userId,
-    tokenEx: state.tokenEx
+    tokenEx: state.tokenEx,
+    creating: state.creating,
+	isLoading: state.isLoading,
+	selectedEvent: state.selectedEvent
 })
 
 export default connect(mapStateToProps)(Auth);

@@ -2,5 +2,40 @@
 .anEvent {
 	margin: 1rem 0rem;
 	padding: 1rem;
-	border: 1px solid currentColor;
+	/*border: 1px solid currentColor;*/
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background: rgba(0, 0, 0, 0.65);
+}
+
+.anEvent h1 {
+	margin: 0;
+	font-size: 1.75rem;
+	color: var(--border-color);
+}
+
+.anEvent h2 {
+	margin: 0;
+	margin-left: 3px;
+	font-size: 1rem;
+	color: currentColor;
+}
+
+.eventDetailsButton {
+	color: currentColor;
+	width: 3rem;
+}
+
+.eventDetailsButton:hover {
+	color: var(--bg-nav-hover);
+	transform: scale(1.2);
+	cursor: pointer;
+}
+
+.ownerCheck {
+	color: green;
+	width: 2.3rem;
+	margin: 0;
+	transform: translateX(5px);
 }

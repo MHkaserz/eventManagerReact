@@ -42,3 +42,15 @@
 	transform: scale(1.2);
 	cursor: pointer;
 }
+
+.someModalForm h2,
+.someModalForm p {
+	margin-left: 2vw;
+}
+
+.someModalForm h2 {
+	display: inline-block;
+	font-size: .75rem;
+	border: .25px solid currentColor;
+	padding: 2.5px;
+}

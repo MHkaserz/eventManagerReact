@@ -18,10 +18,10 @@ import './App.css';
 class App extends Component {
     // Handlers
     logout = () => {
-        localStorage.setItem('token', '');
-        localStorage.setItem('userId', '');
-        localStorage.setItem('tokenEx', '');
-        this.props.dispatch({ type: "LOGOUT" });
+        // localStorage.setItem('token', '');
+        // localStorage.setItem('userId', '');
+        // localStorage.setItem('tokenEx', '');
+        // this.props.dispatch({ type: "LOGOUT" });
         window.location.href = "http://localhost:3000/auth";
     }
 

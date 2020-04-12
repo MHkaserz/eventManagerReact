@@ -34,12 +34,27 @@ const initialState = {
     token: '',
     userId: '',
     tokenEx: '',
-    creating: false
+    creating: false,
+    isLoading: false,
+    selectedEvent: null
 }
 
 // Redux reducer // TODO: Maybe refactor or understand dispatch better
 function reducer(state = initialState, action) {
 	switch(action.type) {
+        // Overlays
+        case 'LOADING':
+            return {    
+                events: state.events,
+                isLogged: state.isLogged,
+                token: state.token,
+                userId: state.userId,
+                tokenEx: state.tokenEx,
+                creating: false,
+                isLoading: true,
+                selectedEvent: state.selectedEvent
+            };
+
         // Fetch handlers
         case 'FETCHEDEVENTS':
             return {
@@ -49,7 +64,9 @@ function reducer(state = initialState, action) {
                 token: state.token,
                 userId: state.userId,
                 tokenEx: state.tokenEx,
-                creating: false
+                creating: false,
+                isLoading: false,
+                selectedEvent: state.selectedEvent
             }
 
 		// Auth actions
@@ -57,10 +74,13 @@ function reducer(state = initialState, action) {
 			return {    
                 events: state.events,
                 isLogged: true,
+                switchTo: state.switchTo,
                 token: action.token,
                 userId: action.userId,
                 tokenEx: action.tokenEx,
-                creating: false
+                creating: false,
+                isLoading: false,
+                selectedEvent: state.selectedEvent
             };
 
 		case 'LOGOUT':
@@ -75,7 +95,9 @@ function reducer(state = initialState, action) {
                 token: state.token,
                 userId: state.userId,
                 tokenEx: state.tokenEx,
-                creating: state.creating
+                creating: state.creating,
+                isLoading: state.isLoading,
+                selectedEvent: state.selectedEvent
             };
 
         case 'LOGIN':
@@ -86,28 +108,49 @@ function reducer(state = initialState, action) {
                 token: state.token,
                 userId: state.userId,
                 tokenEx: state.tokenEx,
-                creating: state.creating
+                creating: state.creating,
+                isLoading: state.isLoading,
+                selectedEvent: state.selectedEvent
             };
 
         // Modal forms actions
-        case 'CREATING':
-            return {    
+        case 'VIEWING':
+            return {
                 events: state.events,
-                isLogged: true,
+                isLogged: state.isLogged,
+                switchTo: state.switchTo,
                 token: state.token,
                 userId: state.userId,
                 tokenEx: state.tokenEx,
-                creating: true
+                creating: state.creating,
+                isLoading: state.isLoading,
+                selectedEvent: action.selectedEvent
+            };
+
+        case 'CREATING':
+            return {    
+                events: state.events,
+                isLogged: state.isLogged,
+                switchTo: state.switchTo,
+                token: state.token,
+                userId: state.userId,
+                tokenEx: state.tokenEx,
+                creating: true,
+                isLoading: false,
+                selectedEvent: state.selectedEvent
             };
 
         case 'CANCEL':
             return {    
                 events: state.events,
-                isLogged: true,
+                isLogged: state.isLogged,
+                switchTo: state.switchTo,
                 token: state.token,
                 userId: state.userId,
                 tokenEx: state.tokenEx,
-                creating: false
+                creating: false,
+                isLoading: state.isLoading,
+                selectedEvent: null
             };
 
 		// Default action
