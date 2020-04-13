@@ -11,7 +11,7 @@ const event = props => (
 	<li className="anEvent">
       	<div>
       		<h1> { props.title.toUpperCase() } </h1>
-      		<h2> ${ props.price } - { new Date(props.date).toLocaleDateString() }</h2>
+      		<h2> ${ props.price } - { new Date(props.date).toLocaleDateString() } </h2>
       	</div> 
       	<div>
       		<button className="eventDetailsButton" title="Details" onClick={props.onDetail.bind(this, props.eventId)}> <InfoIcon /> </button>

@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 // Componenets
 import Modal from '../components/Modal/Modal';
-import Backdrop from '../components/Backdrop/Backdrop'
+import Backdrop from '../components/Backdrop/Backdrop';
 import EventsList from '../components/Events/EventsList/EventsList';
 import Loader from '../components/Loader/Loader';
 
@@ -40,7 +40,58 @@ class Events extends Component {
 	};
 
 	book = () => {
-		this.props.dispatch({ type: "CANCEL" });
+		// Get the current event
+		const currentEventId = this.props.selectedEvent._id;
+
+		// Prepare the query
+		let requestBody;
+
+		requestBody = {
+		query: `
+			mutation {
+				bookEvent(eventId: "${currentEventId}") {
+					_id createdAt updatedAt
+				}
+			}
+		`
+		};
+
+		// Hit the API
+		fetch('http://localhost:8000/graphql', {
+			method: 'POST',
+			body: JSON.stringify(requestBody),
+			headers: {
+				'Content-type': 'application/json',
+				'Authorization': `Bearer ${this.props.token}` 
+			}
+		}).then(res => {
+			// Handle bad requests
+			if(res.status !== 200 && res.status !== 201) {
+				throw new Error('Denied!');
+			}
+			// Parse good requests
+			return res.json();
+		}).then(resData => {
+			// Handle the response data
+			if(resData.errors) {
+				// TODO: Handle errors
+				alert(resData.errors[0].message);
+			} else {
+				// Dispatch the state
+				if(this.props.selectedEvent) { 
+					// Alert the user and update state
+					alert('Event booked successfully!');
+					this.cancel();
+					console.log(resData);
+				} else {
+					if(!alert('Something went wrong')){window.location.reload();}
+				}
+			}
+		}).catch(err => { 
+			// TODO: Handle network error
+			this.cancel();
+			console.log(err); 
+		});
 	};
 
 	confirm = () => {
@@ -102,7 +153,7 @@ class Events extends Component {
 				if(this.props.creating) { 
 					// Alert the user and update state
 					alert('Event created successfully!');
-					this.props.dispatch({ type: "CANCEL" });
+					this.cancel();
 
 					// Update events without hitting the API
 					const updatedEvents = this.props.events;
@@ -126,7 +177,7 @@ class Events extends Component {
 			}
 		}).catch(err => { 
 			// TODO: Handle network error
-			this.props.dispatch({ type: "CANCEL" });
+			this.cancel();
 			console.log(err); 
 		});
 	};
@@ -173,7 +224,7 @@ class Events extends Component {
 			}
 		}).catch(err => { 
 			// TODO: Handle network error
-			this.props.dispatch({ type: "CANCEL" });
+			this.cancel();
 			console.log(err); 
 		});
 	};

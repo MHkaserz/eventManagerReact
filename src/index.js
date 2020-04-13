@@ -29,6 +29,7 @@ window.onload = function(){
 // Initial state
 const initialState = {
     events: [],
+    bookings: [],
     isLogged: false,
     switchTo: 'Register',
     token: '',
@@ -46,6 +47,7 @@ function reducer(state = initialState, action) {
         case 'LOADING':
             return {    
                 events: state.events,
+                bookings: state.bookings,
                 isLogged: state.isLogged,
                 token: state.token,
                 userId: state.userId,
@@ -59,6 +61,7 @@ function reducer(state = initialState, action) {
         case 'FETCHEDEVENTS':
             return {
                 events: action.events,
+                bookings: state.bookings,
                 isLogged: state.isLogged,
                 switchTo: 'Register',
                 token: state.token,
@@ -67,12 +70,27 @@ function reducer(state = initialState, action) {
                 creating: false,
                 isLoading: false,
                 selectedEvent: state.selectedEvent
-            }
+            };
+
+        case 'FETCHEDBOOKINGS':
+            return {
+                events: state.events,
+                bookings: action.bookings,
+                isLogged: state.isLogged,
+                switchTo: 'Register',
+                token: state.token,
+                userId: state.userId,
+                tokenEx: state.tokenEx,
+                creating: false,
+                isLoading: false,
+                selectedEvent: state.selectedEvent
+            };
 
 		// Auth actions
 		case 'AUTHPASS':
 			return {    
                 events: state.events,
+                bookings: state.bookings,
                 isLogged: true,
                 switchTo: state.switchTo,
                 token: action.token,
@@ -90,6 +108,7 @@ function reducer(state = initialState, action) {
         case 'REGISTER':
             return {    
                 events: state.events,
+                bookings: state.bookings,
                 isLogged: state.isLogged,
                 switchTo: 'Login',
                 token: state.token,
@@ -103,6 +122,7 @@ function reducer(state = initialState, action) {
         case 'LOGIN':
             return {    
                 events: state.events,
+                bookings: state.bookings,
                 isLogged: state.isLogged,
                 switchTo: 'Register',
                 token: state.token,
@@ -117,6 +137,7 @@ function reducer(state = initialState, action) {
         case 'VIEWING':
             return {
                 events: state.events,
+                bookings: state.bookings,
                 isLogged: state.isLogged,
                 switchTo: state.switchTo,
                 token: state.token,
@@ -130,6 +151,7 @@ function reducer(state = initialState, action) {
         case 'CREATING':
             return {    
                 events: state.events,
+                bookings: state.bookings,
                 isLogged: state.isLogged,
                 switchTo: state.switchTo,
                 token: state.token,
@@ -143,6 +165,7 @@ function reducer(state = initialState, action) {
         case 'CANCEL':
             return {    
                 events: state.events,
+                bookings: state.bookings,
                 isLogged: state.isLogged,
                 switchTo: state.switchTo,
                 token: state.token,

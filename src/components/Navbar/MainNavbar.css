@@ -24,7 +24,7 @@
 .dropdown {
 	position: absolute;
 	opacity: 0;
-	z-index: 2;
+	z-index: 0;
 	background: var(--bg-dropdown);
 
 	display: flex;
@@ -34,10 +34,13 @@
 
 	box-shadow: 0px 0.175rem 0.25em rgba(2, 8, 20, 0.1);
 	transition: opacity .15s ease-out;
+
+	transition: var(--svg-transition-time) ease-in-out;
 }
 
 .hasDropdown:focus-within .dropdown {
 	opacity: 1;
+	z-index: 2;
 }
 
 /* Header css */
@@ -153,9 +156,18 @@
 		border-top-left-radius: 8px;
 		padding-right: 1.2rem;
 
-		right: 12vw; 
+		right: 0vw; 
 		top: 34.15vh;
+		width: 0rem;
+		z-index: -1;
+
+		transition: var(--svg-transition-time) ease-in-out;
+	}
+
+	.hasDropdown:focus-within .dropdown {
+		right: 12vw;
 		width: 3rem;
+		z-index: 2;
 	}
 
 	.dropdown a {
