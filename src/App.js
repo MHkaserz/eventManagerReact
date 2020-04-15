@@ -14,7 +14,7 @@ import MainNavbar from './components/Navbar/MainNavbar';
 // CSS
 import './App.css';
 
-// Application starting function
+// Application start point
 class App extends Component {
     // Handlers
     logout = () => {
