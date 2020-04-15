@@ -14,15 +14,61 @@ class Bookings extends Component {
 	}
 
 	// Handlers
-	cancelBooking = () => {
+	cancelBooking = bookingId => {
+		// Loader
+		this.props.dispatch({ type: "LOADING" })
 
+		// Prepare the query
+		let requestBody;
+
+		requestBody = {
+		query: `
+			mutation {
+				cancelBooking(bookingId: "${bookingId}") {
+					title
+				}
+			}
+		`
+		};
+
+		// Hit the API
+		fetch('http://localhost:8000/graphql', {
+			method: 'POST',
+			body: JSON.stringify(requestBody),
+			headers: {
+				'Content-type': 'application/json',
+				'Authorization': `Bearer ${this.props.token}`
+			}
+		}).then(res => {
+			// Handle bad requests
+			if(res.status !== 200 && res.status !== 201) {
+				throw new Error('Denied!');
+			}
+			// Parse good requests
+			return res.json();
+		}).then(resData => {
+			// Handle the response data
+			if(resData.errors) {
+				// TODO: Handle errors
+				alert(resData.errors[0].message);
+			} else {
+				alert('Your booking for ' + resData.data.cancelBooking.title + ' has been cancelled');
+				
+				// Update bookings without hitting the API
+				const updatedBookings = this.props.bookings.filter(function(booking) {return booking._id !== bookingId});
+				this.props.dispatch({ type: "FETCHEDBOOKINGS", bookings: updatedBookings });
+			}
+		}).catch(err => { 
+			// TODO: Handle network error
+			this.cancel(); 
+		});
 	};
 
 	cancel = () => {
 		this.props.dispatch({ type: "CANCEL" });
 	};
 
-	// Fetch all events
+	// Fetch all bookings
 	fetchBookings = () => {
 		// Loader
 		this.props.dispatch({ type: "LOADING" })
@@ -34,7 +80,7 @@ class Bookings extends Component {
 		query: `
 			query {
 				bookings {
-					_id bookFor { title date } bookBy { _id } updatedAt
+					_id bookFor { _id title date } bookBy { _id } updatedAt
 				}
 			}
 		`
@@ -66,7 +112,6 @@ class Bookings extends Component {
 		}).catch(err => { 
 			// TODO: Handle network error
 			this.cancel();
-			console.log(err); 
 		});
 	};
 

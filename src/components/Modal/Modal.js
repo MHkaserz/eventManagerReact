@@ -17,7 +17,8 @@ const Modal = props => (
 		</section>
 		<section className="modalActions"> 
 			<button title="Cancel" onClick={props.onCancel}> <CancelIcon /> </button>
-			{props.isLogged && <button title={props.buttonTitle} onClick={props.onConfirm}> <SubmitIcon /> </button>}
+			{((props.isLogged && props.eventOwner !== props.currentUser) || props.isCreating) &&
+				<button title={props.buttonTitle} onClick={props.onConfirm}> <SubmitIcon /> </button>}
 		</section>
 	</div>
 );

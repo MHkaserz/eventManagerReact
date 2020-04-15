@@ -82,7 +82,6 @@ class Events extends Component {
 					// Alert the user and update state
 					alert('Event booked successfully!');
 					this.cancel();
-					console.log(resData);
 				} else {
 					if(!alert('Something went wrong')){window.location.reload();}
 				}
@@ -90,7 +89,6 @@ class Events extends Component {
 		}).catch(err => { 
 			// TODO: Handle network error
 			this.cancel();
-			console.log(err); 
 		});
 	};
 
@@ -153,7 +151,6 @@ class Events extends Component {
 				if(this.props.creating) { 
 					// Alert the user and update state
 					alert('Event created successfully!');
-					this.cancel();
 
 					// Update events without hitting the API
 					const updatedEvents = this.props.events;
@@ -178,7 +175,6 @@ class Events extends Component {
 		}).catch(err => { 
 			// TODO: Handle network error
 			this.cancel();
-			console.log(err); 
 		});
 	};
 
@@ -225,7 +221,6 @@ class Events extends Component {
 		}).catch(err => { 
 			// TODO: Handle network error
 			this.cancel();
-			console.log(err); 
 		});
 	};
 
@@ -243,7 +238,8 @@ class Events extends Component {
 					buttonTitle="Confirm"
 					isLogged={this.props.isLogged}
 					onCancel={this.cancel}
-					onConfirm={this.confirm}>
+					onConfirm={this.confirm}
+					isCreating={this.props.creating}>
 					<form className="eventForm">
 						<div className="formHolder"> <input ref={this.titleElement} type="text" placeholder=" Title"/> </div>
 						<div className="formHolder"> <input ref={this.dateElement} type="datetime-local"/> </div>
@@ -258,7 +254,9 @@ class Events extends Component {
 					buttonTitle="Book"
 					isLogged={this.props.isLogged}
 					onCancel={this.cancel}
-					onConfirm={this.book}>
+					onConfirm={this.book}
+					eventOwner={this.props.selectedEvent.owner._id}
+					currentUser={this.props.userId}>
 						{this.props.selectedEvent.category && <h2> {this.props.selectedEvent.category.toUpperCase()} </h2>}
 						<p> {this.props.selectedEvent.description} </p>
 				</Modal>}
