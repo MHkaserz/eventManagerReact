@@ -199,13 +199,13 @@ class Events extends Component {
 		let requestBody;
 
 		requestBody = {
-		query: `
-			query {
-				events {
-					_id title price description category date owner { _id email name }
+			query: `
+				query {
+					events {
+						_id title price description category date owner { _id email name }
+					}
 				}
-			}
-		`
+			`
 		};
 
 		// Hit the API
