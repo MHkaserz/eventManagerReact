@@ -53,26 +53,36 @@ class Auth extends Component {
 
 		if(this.props.switchTo === 'Register') {
 			requestBody = {
-			query: `
-				query {
-					login(email: "${email}", password: "${password}") {
-						userId token tokenExpiration
+				query: `
+					query login($email: String!, $password: String!) {
+						login(email: $email, password: $password) {
+							userId token tokenExpiration
+						}
 					}
+				`,
+				variables: {
+					email: email,
+					password: password
 				}
-			`
 			};
 		}
 
 		// TODO: Ask them to repeat password in a field that doesn't allow copy-paste
 		if(this.props.switchTo === 'Login') {
 			requestBody = {
-			query: `
-				mutation {
-					createUser(userInput: {email: "${email}", password: "${password}", name: "${name}", birth: "${birthDate}"}) {
-						_id email
+				query: `
+					mutation createUser($email: String!, $password: String!, $name: String!, $birth: String!) {
+						createUser(userInput: {email: $email, password: $password, name: $name, birth: $birth}) {
+							_id email
+						}
 					}
+				`,
+				variables: {
+					email: email,
+					password: password,
+					name: name,
+					birth: birthDate
 				}
-			`
 			};
 		}
 

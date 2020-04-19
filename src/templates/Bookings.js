@@ -81,13 +81,13 @@ class Bookings extends Component {
 		let requestBody;
 
 		requestBody = {
-		query: `
-			query {
-				bookings {
-					_id bookFor { _id title date } bookBy { _id } updatedAt
+			query: `
+				query {
+					bookings {
+						_id bookFor { _id title date } bookBy { _id } updatedAt
+					}
 				}
-			}
-		`
+			`
 		};
 
 		// Hit the API
