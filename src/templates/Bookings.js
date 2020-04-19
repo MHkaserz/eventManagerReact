@@ -51,6 +51,7 @@ class Bookings extends Component {
 			if(resData.errors) {
 				// TODO: Handle errors
 				alert(resData.errors[0].message);
+				return;
 			} else {
 				alert('Your booking for ' + resData.data.cancelBooking.title + ' has been cancelled');
 				
@@ -120,7 +121,13 @@ class Bookings extends Component {
 			<React.Fragment>
 				{this.props.isLoading ? 
 					<div> <Loader /> <Backdrop /> </div>
-					: <BookingsList bookings={this.props.bookings} currentUser={this.props.userId} onCancelBooking={this.cancelBooking} />}
+					: <div> 
+						{this.props.bookings[0] ?
+							<BookingsList bookings={this.props.bookings} currentUser={this.props.userId} onCancelBooking={this.cancelBooking} />
+							: <div> No bookings found </div>
+						} 
+					</div>
+				}
 			</React.Fragment>
 		);
 	}

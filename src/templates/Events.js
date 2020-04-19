@@ -76,6 +76,7 @@ class Events extends Component {
 			if(resData.errors) {
 				// TODO: Handle errors
 				alert(resData.errors[0].message);
+				return;
 			} else {
 				// Dispatch the state
 				if(this.props.selectedEvent) { 
@@ -146,6 +147,7 @@ class Events extends Component {
 			if(resData.errors) {
 				// TODO: Handle errors
 				alert(resData.errors[0].message);
+				return;
 			} else {
 				// Dispatch the state
 				if(this.props.creating) { 
@@ -215,6 +217,7 @@ class Events extends Component {
 			if(resData.errors) {
 				// TODO: Handle errors
 				alert(resData.errors[0].message);
+				return;
 			} else {
 				this.props.dispatch({ type: "FETCHEDEVENTS", events: resData.data.events });
 			}

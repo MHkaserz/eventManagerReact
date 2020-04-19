@@ -21,13 +21,7 @@ const bookingsList = props => {
 			onCancelBooking={props.onCancelBooking} />
 		}
 	);
-
-	if(!bookings[0]) {
-		return (
-			<ul className="listedBookings"> <li className="aBooking"> You got no bookings :c </li> </ul>
-		);
-	}
-
+	
 	return (
 		<ul className="listedBookings"> { bookings } </ul>
 	);
