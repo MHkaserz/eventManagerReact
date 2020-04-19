@@ -22,13 +22,16 @@ class Bookings extends Component {
 		let requestBody;
 
 		requestBody = {
-		query: `
-			mutation {
-				cancelBooking(bookingId: "${bookingId}") {
-					title
+			query: `
+				mutation cancelBooking($bookingId: ID!) {
+					cancelBooking(bookingId: $bookingId) {
+						title
+					}
 				}
+			`,
+			variables: {
+				bookingId: bookingId
 			}
-		`
 		};
 
 		// Hit the API
