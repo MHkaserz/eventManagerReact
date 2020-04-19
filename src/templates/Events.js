@@ -47,13 +47,16 @@ class Events extends Component {
 		let requestBody;
 
 		requestBody = {
-		query: `
-			mutation {
-				bookEvent(eventId: "${currentEventId}") {
-					_id createdAt updatedAt
+			query: `
+				mutation bookEvent($eventId: ID!) {
+					bookEvent(eventId: $eventId) {
+						_id createdAt updatedAt
+					}
 				}
+			`,
+			variables: {
+				eventId: currentEventId
 			}
-		`
 		};
 
 		// Hit the API
@@ -117,13 +120,20 @@ class Events extends Component {
 
 		if(this.props.creating) {
 			requestBody = {
-			query: `
-				mutation {
-					createEvent(eventInput: {title: "${title}", price: ${price}, description: "${description}", category: "${category}", date: "${eventDate}"}) {
-						_id title price description category date
+				query: `
+					mutation createEvent($title: String!, $price: Float!, $description: String!, $category: String, $date: String!){
+						createEvent(eventInput: {title: $title, price: $price, description: $description, category: $category, date: $date}) {
+							_id title price description category date
+						}
 					}
+				`,
+				variables: {
+					title: title,
+					price: price,
+					description: description,
+					category: category,
+					date: eventDate
 				}
-			`
 			};
 		}
 
